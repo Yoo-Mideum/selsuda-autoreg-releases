@@ -1,6 +1,6 @@
 {
- "latest": "v231",
- "backend": "b172",
+ "latest": "v233",
+ "backend": "b176",
  "note": "글자 읽기를 내 컴퓨터로 (AI 비용 절감) · 재설치 없는 업데이트",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
@@ -13,8 +13,8 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "c7677e7447a6e569f3e155541e2dc82b3e29d8b3a157660b9f42f8d53c1d108b",
-    "size": 192068
+    "sha256": "98ca3f8ab4478b5e6f1fd9312c40851dd848ba55837ee9e2cac49fdc85041b4d",
+    "size": 192395
    },
    {
     "path": "확장프로그램/background.js",
@@ -23,7 +23,7 @@
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "4630d2bc9457ffde111f6024e345fb360b7c67071bd20cf2c5f1065c4e3434d3",
+    "sha256": "75168999610a162c9ec146502801bbfaac955e74b7eeb3022cc3c711fd0a39b8",
     "size": 1003
    },
    {
@@ -68,8 +68,8 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "2a06375aaea8750c7a9792d0324ba975bfea17b2fa139241eab33045288826c5",
-    "size": 236955
+    "sha256": "fe33b92b46903201f5b4212f87f8117560e63fd9ab958480e1d134ef3a221673",
+    "size": 238332
    }
   ]
  }
