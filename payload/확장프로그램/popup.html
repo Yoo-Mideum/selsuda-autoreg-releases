@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <title>자동상품등록 프로그램 (자동후불사입 용) by 셀수다</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --g:#03c75a;--gd:#02a44d;--gbg:#eafaf2;
+      --b1:#f6f6f6;--b2:#ececec;--b3:#ddd;
+      --t1:#111;--t2:#555;--t3:#999;
+      --blue:#4285f4;--bluebg:#e8f0fe;
+      --red:#d93025;--r:9px;
+    }
+    body{width:100%;min-width:360px;margin:0;font-family:'Apple SD Gothic Neo','Pretendard',-apple-system,'맑은 고딕',sans-serif;font-size:13px;color:var(--t1);background:#fff}
+    .hd{display:flex;align-items:center;justify-content:space-between;padding:13px 15px 11px;border-bottom:1px solid var(--b3)}
+    .hd-left{display:flex;align-items:center;gap:10px}
+    .hd-ico{font-size:24px;line-height:1}
+    .hd-title{font-size:14px;font-weight:700;letter-spacing:-.3px}
+    .hd-sub{font-size:11px;color:var(--t3);margin-top:1px}
+    .btn-setting{width:30px;height:30px;border:1px solid var(--b3);border-radius:6px;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .12s}
+    .btn-setting:hover{background:var(--b1)}
+
+    /* API 설정 패널 */
+    .api-panel{background:#f8faff;border-bottom:1px solid #d2e3fc;padding:14px 15px;display:none}
+    .api-panel.open{display:block}
+    .api-section-title{font-size:12px;font-weight:700;color:#1a73e8;margin-bottom:10px;display:flex;align-items:center;gap:5px}
+    .provider-tabs{display:flex;gap:5px;background:#eef1f5;padding:4px;border-radius:8px}
+    .pv-tab{flex:1;padding:7px 0;font-size:11.5px;font-weight:700;border:none;background:none;border-radius:6px;cursor:pointer;color:#888;font-family:inherit;transition:all .12s}
+    .pv-tab.active{background:#fff;color:#1a73e8;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .api-label{font-size:11px;font-weight:700;color:var(--t2);margin-bottom:5px}
+    .api-row{display:flex;gap:6px}
+    .api-input{flex:1;height:34px;padding:0 10px;font-size:12px;border:1px solid #d2e3fc;border-radius:var(--r);background:#fff;color:var(--t1);outline:none;font-family:monospace}
+    .api-input:focus{border-color:var(--blue)}
+    .btn-save-key{height:34px;padding:0 12px;font-size:12px;font-weight:700;background:var(--blue);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-family:inherit}
+    .btn-save-key:hover{background:#3367d6}
+    .api-status{font-size:11px;margin-top:5px;color:var(--t3);min-height:16px}
+    .api-status.ok{color:#137333}.api-status.err{color:var(--red)}
+
+    /* 설정 가이드 */
+    .setup-guide{margin-top:10px;border:1px solid #d2e3fc;border-radius:var(--r);overflow:hidden}
+    .guide-tab{display:grid;grid-template-columns:1fr 1fr}
+    .tab-btn{padding:7px;font-size:11px;font-weight:700;background:#e8f0fe;color:var(--blue);border:none;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent;transition:all .12s}
+    .tab-btn.active{background:#fff;border-bottom-color:var(--blue);color:#1a56c4}
+    .guide-body{background:#fff;padding:10px;font-size:11px;color:var(--t2);line-height:1.7}
+    .guide-body.hidden{display:none}
+    .step{display:flex;gap:7px;align-items:flex-start;margin-bottom:3px}
+    .sn{background:var(--blue);color:#fff;font-size:10px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .guide-body a{color:var(--blue);text-decoration:none}
+    .cost-highlight{background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:7px 9px;margin-top:8px;font-size:11px;color:#5d4037;line-height:1.7}
+
+    /* 배너 */
+    .no-key-banner{background:#fef7e0;border:1px solid #fde293;border-radius:var(--r);padding:10px 12px;margin:12px 15px 0;font-size:12px;color:#7d5c00;display:none;align-items:center;gap:8px}
+    .no-key-banner.show{display:flex}
+
+    /* 스캔 버튼 */
+    .scan-wrap{padding:14px 15px 0}
+    .btn-scan{width:100%;height:46px;font-size:14px;font-weight:700;background:var(--g);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .12s,transform .1s}
+    .btn-scan:hover{background:var(--gd)}.btn-scan:active{transform:scale(.98)}
+    .btn-scan:disabled{background:var(--b2);color:var(--t3);cursor:not-allowed;transform:none}
+    .btn-scan.busy{background:#1a73e8;animation:pulse 1s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
+    .scan-hint{font-size:11px;color:var(--t3);text-align:center;margin-top:7px;line-height:1.5}
+
+    /* 상태 */
+    .status{display:flex;align-items:center;gap:6px;padding:8px 15px;font-size:12px;color:var(--t2);min-height:32px}
+    .status.ok{color:#137333}.status.err{color:var(--red)}.status.loading{color:#1a73e8}
+
+    /* 썸네일 */
+    .thumb-sec{padding:0 15px 10px;display:none}
+    .sec-label{font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.3px;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+    .badge{background:var(--gbg);color:var(--gd);font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px}
+    .badge-blue{background:var(--bluebg);color:var(--blue)}
+    .thumb-list{display:flex;gap:6px;overflow-x:auto;padding-bottom:3px;scrollbar-width:thin}
+    .thumb-list::-webkit-scrollbar{height:3px}
+    .thumb-list::-webkit-scrollbar-thumb{background:var(--b2);border-radius:99px}
+    .th{flex-shrink:0;width:62px;height:62px;border-radius:var(--r);border:2px solid var(--b3);cursor:pointer;overflow:hidden;background:var(--b1);display:flex;align-items:center;justify-content:center;transition:border-color .12s}
+    .th img{width:100%;height:100%;object-fit:cover;display:block}
+    .th.active{border-color:var(--g)}.th.fail{opacity:.3;cursor:not-allowed}
+    .th-ph{font-size:16px;color:var(--t3)}
+
+    /* 미리보기 */
+    .pv-wrap{display:flex;align-items:flex-start;gap:8px;padding:0 15px 12px}
+    .pv{flex:1;min-width:0}
+    .pv-label{font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.3px;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+    .pv-box{width:100%;aspect-ratio:1;border:1px solid var(--b3);border-radius:var(--r);overflow:hidden;background:var(--b1);display:flex;align-items:center;justify-content:center;position:relative}
+    .pv-box img{width:100%;height:100%;object-fit:contain;display:block}
+    .pv-empty{display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--t3);padding:8px;text-align:center}
+    .pv-empty-ico{font-size:22px}.pv-empty-txt{font-size:11px;line-height:1.4}
+    .pv-meta{font-size:10px;color:var(--t3);margin-top:4px;text-align:center}
+    .arrow{flex-shrink:0;font-size:16px;color:var(--t3);padding-top:38px}
+    .spin-ov{position:absolute;inset:0;background:rgba(255,255,255,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+    .spinner{width:28px;height:28px;border:3px solid var(--b3);border-top-color:#4285f4;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .spin-step{font-size:11px;color:var(--t2);text-align:center;line-height:1.6;max-width:140px}
+
+    /* 액션 */
+    .action-wrap{padding:0 15px 12px;display:flex;flex-direction:column;gap:7px}
+    .btn-conv{width:100%;height:44px;font-size:13px;font-weight:700;background:var(--g);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-family:inherit;transition:background .12s,transform .1s;display:flex;align-items:center;justify-content:center;gap:7px}
+    .btn-conv:hover{background:var(--gd)}.btn-conv:active{transform:scale(.98)}
+    .btn-conv:disabled{background:var(--b2);color:var(--t3);cursor:not-allowed;transform:none}
+    .btn-conv.busy{background:#1a73e8;animation:pulse 1s ease-in-out infinite}
+    .gemini-badge{background:rgba(255,255,255,0.22);font-size:10px;padding:2px 7px;border-radius:4px;font-weight:600}
+    .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .btn-sub{height:34px;font-size:12px;font-weight:600;border:1px solid var(--b3);border-radius:var(--r);background:#fff;color:var(--t2);cursor:pointer;font-family:inherit;transition:background .12s}
+    .btn-sub:hover{background:var(--b1)}.btn-sub:disabled{opacity:.35;cursor:not-allowed}
+    .usage-bar{display:flex;align-items:center;justify-content:space-between;padding:0 15px 13px;gap:8px}
+    .usage-counter{font-size:11px;color:var(--t2);flex:1}
+    .uc-num{font-weight:700;color:var(--t1)}
+    .uc-cost{color:var(--t3);margin-left:6px}
+    .btn-reset{font-size:10px;color:var(--t3);background:none;border:1px solid var(--b3);border-radius:4px;padding:2px 7px;cursor:pointer;white-space:nowrap;font-family:inherit}
+    .btn-reset:hover{background:var(--b1);color:var(--t2)}
+    .cost-footer{font-size:11px;color:var(--t3);text-align:center;padding:0 15px 12px;line-height:1.6}
+    .tabs{display:flex;border-bottom:1px solid var(--b3);background:#fafafa}
+    .tab{flex:1;padding:11px 0;font-size:13px;font-weight:700;text-align:center;background:none;border:none;cursor:pointer;color:var(--t3);border-bottom:2px solid transparent;font-family:inherit;transition:all .12s}
+    .tab.active{color:var(--g);border-bottom-color:var(--g)}
+    .tab:hover:not(.active){color:var(--t2);background:#f2f2f2}
+    .tab-content{display:none}
+    .tab-content.active{display:block}
+    .detail-result{padding:0 15px 12px}
+    .detail-box{border:1px solid var(--b3);border-radius:var(--r);padding:12px;background:#fff;max-height:55vh;overflow-y:auto;font-size:12px;line-height:1.7;color:var(--t1)}
+    .detail-section-title{font-size:11px;font-weight:700;color:var(--g);margin:12px 0 5px;letter-spacing:.3px}
+    .detail-section-title:first-child{margin-top:0}
+    .notice-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:4px}
+    .notice-table th{background:#f0f7f3;color:var(--t2);text-align:left;padding:5px 7px;border:1px solid #e0ebe5;width:38%;font-weight:600;vertical-align:top}
+    .notice-table td{padding:5px 7px;border:1px solid #eee;color:var(--t1);vertical-align:top}
+    .copy-warn{background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:7px 9px;margin-top:8px;font-size:10.5px;color:#5d4037;line-height:1.6}
+    .detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+  </style>
+</head>
+<body>
+
+  <div class="hd">
+    <div class="hd-left">
+      <div class="hd-ico">🛒</div>
+      <div>
+        <div class="hd-title">자동상품등록 프로그램</div>
+        <div class="hd-sub">(자동후불사입 용) by 셀수다</div>
+      </div>
+    </div>
+    <button class="btn-setting" id="btnSetting" title="AI API 키 설정">⚙️</button>
+  </div>
+
+  <!-- API 설정 패널 -->
+  <div class="api-panel" id="apiPanel" style="display:none">
+    <div class="api-section-title">🔑 AI API 설정 (3사 중 선택)</div>
+
+    <!-- 제공사 선택 -->
+    <div class="provider-tabs">
+      <button class="pv-tab active" data-pv="gemini">Gemini</button>
+      <button class="pv-tab" data-pv="openai">ChatGPT</button>
+      <button class="pv-tab" data-pv="claude">Claude</button>
+    </div>
+
+    <div class="api-label" style="margin-top:10px">API 키 입력 <span style="font-weight:400;color:var(--t3)">(브라우저에만 저장)</span></div>
+    <div class="api-row">
+      <input class="api-input" type="password" id="apiKeyInput" placeholder="키를 붙여넣으면 제공사 자동 인식"/>
+      <button class="btn-save-key" id="btnSaveKey">저장</button>
+    </div>
+    <div class="api-status" id="apiStatus"></div>
+
+    <!-- 제공사별 안내 -->
+    <div class="setup-guide">
+      <div style="padding:8px 10px 0;font-size:11px;font-weight:700;color:var(--t2)">📋 선택한 제공사 안내</div>
+      <div class="guide-body" id="guideBody"></div>
+    </div>
+
+    <!-- 네이버 커머스 API 키 (팝업에서 바로 입력 → config.json 자동 저장) -->
+    <div class="api-section-title" style="margin-top:16px;border-top:1px solid rgba(0,0,0,.08);padding-top:14px">🛒 네이버 커머스 API 키 <span style="font-weight:400;color:var(--t3)">(상품 등록에 필요)</span></div>
+    <div class="api-label" style="margin-top:8px">애플리케이션 ID (client_id)</div>
+    <div class="api-row">
+      <input class="api-input" type="text" id="naverIdInput" placeholder="영문+숫자 조합" autocomplete="off"/>
+    </div>
+    <div class="api-label" style="margin-top:8px">애플리케이션 시크릿 (client_secret)</div>
+    <div class="api-row">
+      <input class="api-input" type="password" id="naverSecretInput" placeholder="$2a$ 로 시작하는 긴 문자열" autocomplete="off"/>
+      <button class="btn-save-key" id="btnSaveNaver">저장</button>
+    </div>
+    <div class="api-status" id="naverStatus"></div>
+    <div style="font-size:11px;color:var(--t3);padding:2px 2px 0;line-height:1.5">
+      apicenter.commerce.naver.com 에서 발급 · 내 PC(config.json)에만 저장됩니다
+    </div>
+  </div>
+
+  <div class="no-key-banner" id="noKeyBanner" style="display:none">
+    <span>⚠️</span><span>⚙️ 버튼을 눌러 AI API 키를 입력해주세요 (Gemini/ChatGPT/Claude)</span>
+  </div>
+
+  <!-- 탭 -->
+  <div class="tabs" style="display:none">
+    <button class="tab active" id="tabThumb" data-tab="thumb">📸 썸네일 변환</button>
+    <button class="tab" id="tabDetail" data-tab="detail" style="display:none">📄 상세페이지 생성</button>
+  </div>
+
+  <!-- 탭1: 썸네일 (자동등록 프로그램에서는 숨김) -->
+  <div class="tab-content active" id="contentThumb" style="display:none">
+
+  <div class="scan-wrap">
+    <button class="btn-scan" id="btnScan">🔍 현재 페이지에서 이미지 스캔</button>
+    <div class="scan-hint">네이버 쇼핑 상품 페이지를 열고 위 버튼을 누르세요</div>
+  </div>
+
+  <div class="status" id="st"><span id="stIco">💡</span><span id="stTxt">API 키 설정 후 상품 페이지를 스캔하세요</span></div>
+
+  <div class="thumb-sec" id="thumbSec">
+    <div class="sec-label">발견된 이미지 <span class="badge" id="thumbCnt">0</span></div>
+    <div class="thumb-list" id="thumbList"></div>
+  </div>
+
+  <div class="pv-wrap">
+    <div class="pv">
+      <div class="pv-label">원본</div>
+      <div class="pv-box" id="origBox"><div class="pv-empty"><div class="pv-empty-ico">🖼️</div><div class="pv-empty-txt">원본 이미지</div></div></div>
+      <div class="pv-meta" id="origMeta">—</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="pv">
+      <div class="pv-label">AI 변환 결과 <span class="badge badge-blue">1000×1000px</span></div>
+      <div class="pv-box" id="resBox" style="position:relative">
+        <div class="pv-empty"><div class="pv-empty-ico">✨</div><div class="pv-empty-txt">AI 스튜디오 변환 후</div></div>
+      </div>
+      <div class="pv-meta" id="resMeta">—</div>
+    </div>
+  </div>
+
+  <!-- 고시정보 텍스트 (복사용) — 2·3번 버튼 사용 시 표시 -->
+  <div id="noticeTextWrap" style="display:none;padding:0 15px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+      <span style="font-size:11px;font-weight:700;color:var(--g)">📝 복사용 텍스트 (고시정보 입력칸에 붙여넣기)</span>
+      <button id="btnCopyNoticeText" style="font-size:11px;padding:3px 10px;border:1px solid var(--g);background:#fff;color:var(--g);border-radius:5px;cursor:pointer;font-family:inherit;font-weight:700">📋 텍스트 복사</button>
+    </div>
+    <textarea id="noticeText" readonly style="width:100%;height:120px;box-sizing:border-box;border:1px solid var(--b3);border-radius:8px;padding:9px;font-size:11.5px;line-height:1.6;color:var(--t1);resize:vertical;font-family:inherit;background:#fafafa"></textarea>
+  </div>
+
+  <div class="action-wrap">
+    <div style="font-size:11px;color:var(--t3);margin-bottom:2px">선택한 이미지를 어떻게 변환할까요?</div>
+    <button class="btn-conv" id="btnConv" disabled style="display:none">
+      ✨ 고급 썸네일로 변환 <span class="gemini-badge">스튜디오 촬영</span>
+    </button>
+    <button class="btn-conv" id="btnNotice" disabled style="background:#4a72c4">
+      📋 상품정보제공고시 → 상세 이미지에서 추출
+    </button>
+    <button class="btn-conv" id="btnNoticeTab" style="background:#6a4ac4">
+      📑 상품정보제공고시 → 제공고시 탭에서 수집
+    </button>
+    <div class="btn-row">
+      <button class="btn-sub" id="btnDl" disabled>⬇ PNG 저장</button>
+      <button class="btn-sub" id="btnCopy" disabled>📋 클립보드 복사</button>
+    </div>
+  </div>
+  <div class="cost-footer">이미지 생성 약 ₩55/장 · Google Cloud 결제 필요 · API 키는 본인 브라우저에만 저장</div>
+
+  </div><!-- /contentThumb -->
+
+  <!-- 탭2: 상세페이지 -->
+  <div class="tab-content" id="contentDetail">
+    <div class="scan-wrap">
+      <button class="btn-scan" id="btnScanDetail">📄 현재 페이지 상세정보 수집</button>
+      <div class="scan-hint">본사/브랜드 상품 상세페이지를 열고 위 버튼을 누르세요<br/>상품정보제공고시와 상세설명을 수집합니다</div>
+    </div>
+
+    <div class="status" id="stDetail"><span id="stDetailIco">💡</span><span id="stDetailTxt">상세페이지를 연 후 수집 버튼을 눌러주세요</span></div>
+
+    <div class="detail-result" id="detailResult" style="display:none">
+      <div class="detail-box" id="detailBox"></div>
+      <div class="copy-warn">
+        ⚖️ <strong>저작권 안내</strong><br/>
+        · 상품정보제공고시는 <strong>원본 텍스트 그대로</strong> 이미지로 정리됩니다 (법적 정보, 정확성 유지)<br/>
+        · 상세 이미지 3장은 AI가 <strong>새로 디자인</strong>합니다 (원본 이미지·문구 미사용)<br/>
+        · 상세 3장 + 고시정보(길이에 따라 1~10장)가 PNG로 저장됩니다
+      </div>
+      <div class="detail-actions">
+        <button class="btn-sub" id="btnGenDetail" disabled>✨ AI 상세페이지 생성</button>
+        <button class="btn-sub" id="btnDownloadDetail" disabled>⬇ 상세 이미지 다운로드</button>
+      </div>
+    </div>
+  </div><!-- /contentDetail -->
+
+  <div class="usage-bar" style="display:none">
+    <div id="usageCounter" class="usage-counter">0회 변환 완료 <span class="uc-cost">누적 약 ₩0</span></div>
+    <button class="btn-reset" id="btnReset" title="사용 횟수 초기화">↺ 초기화</button>
+  </div>
+  <div style="display:none;padding:0 15px 12px;align-items:center;gap:6px;font-size:11.5px;color:var(--t2)">
+    <input type="checkbox" id="autoSave" checked style="width:14px;height:14px;cursor:pointer"/>
+    <label for="autoSave" style="cursor:pointer">변환 완료 시 PNG 자동 저장 (백업)</label>
+  </div>
+
+  <!-- 필수정보 확인 팝업 -->
+  <div id="checkOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:9999;align-items:center;justify-content:center">
+    <div style="background:#fff;border-radius:14px;width:88%;max-width:380px;max-height:80vh;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,0.25)">
+      <div style="padding:18px 20px 12px;border-bottom:1px solid #eee">
+        <div style="font-size:16px;font-weight:800;color:#1a1a1a">📋 필수정보 확인</div>
+        <div style="font-size:12px;color:#888;margin-top:4px">상품정보제공고시 필수 항목이 들어왔는지 확인하세요</div>
+      </div>
+      <div id="checkList" style="padding:14px 20px"></div>
+      <div style="padding:0 20px 18px;display:flex;gap:8px">
+        <button id="checkClose" style="flex:1;padding:11px;border:1px solid #ddd;background:#fff;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#555">닫기</button>
+        <button id="checkConfirm" style="flex:1;padding:11px;border:none;background:#03c75a;color:#fff;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">확인했어요</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="port-resolver.js"></script>
+  <script src="ai-provider.js"></script>
+  <script src="popup.js"></script>
+  <script src="autoregister.js"></script>
+</body>
+</html>

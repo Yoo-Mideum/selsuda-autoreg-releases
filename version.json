@@ -1,0 +1,71 @@
+{
+ "latest": "v229",
+ "backend": "b170",
+ "note": "글자 읽기를 내 컴퓨터로 (AI 비용 절감) · 재설치 없는 업데이트",
+ "url": "",
+ "patch": {
+  "base": "https://raw.githubusercontent.com/Yoo-Mideum/selsuda-autoreg-releases/main/payload/",
+  "files": [
+   {
+    "path": "확장프로그램/ai-provider.js",
+    "sha256": "4d477affdb271a4f27e599a741449af9eb64630ac6d906ab13cc422fc607cff5",
+    "size": 10278
+   },
+   {
+    "path": "확장프로그램/autoregister.js",
+    "sha256": "a2793eb4401e4bb40dedd7cbdf381241766a0be8c97ec5dbe3bd06937e025250",
+    "size": 192007
+   },
+   {
+    "path": "확장프로그램/background.js",
+    "sha256": "9f49a7c8b361bc3f0f4e193e54a96e1ea95dc8a445fdc3ad13f809b8bf2f9062",
+    "size": 67866
+   },
+   {
+    "path": "확장프로그램/manifest.json",
+    "sha256": "a661d0acf7e151563f7c901f9fdfe84364bffc34957d6425aaad86ef7e5079d1",
+    "size": 1003
+   },
+   {
+    "path": "확장프로그램/popup.html",
+    "sha256": "318c6928a1e637e2cc9ac8d7478d081c93d4b3e617793e20660185a90c871f07",
+    "size": 20429
+   },
+   {
+    "path": "확장프로그램/popup.js",
+    "sha256": "7551fdecc4106a51795bcff80cfdcf074e44714f0dfadcb6ac83457bc2163f4f",
+    "size": 43233
+   },
+   {
+    "path": "확장프로그램/port-resolver.js",
+    "sha256": "f4fc0f6bff191583a32dc7102194a0bba44b1cb49d0fb83620d28ab3bf2aba69",
+    "size": 1318
+   },
+   {
+    "path": "백엔드/categories.pyc",
+    "sha256": "af2dd0aabeaac8497a0557ac85ba2e9d5c3f63e0ec980246c93e976a068ddac8",
+    "size": 2529
+   },
+   {
+    "path": "백엔드/categories_cache.json",
+    "sha256": "05c121d7e0db4fab5d7b75a745929fc7bbd4df4b0d9f59ea81ac57a28eb94211",
+    "size": 774138
+   },
+   {
+    "path": "백엔드/mapping.pyc",
+    "sha256": "0c9054ecd0e544a17abd905ff4ff7f57fd1daec1352735e746166ec3b162a2e2",
+    "size": 59274
+   },
+   {
+    "path": "백엔드/naver_client.pyc",
+    "sha256": "d4d7c8b69066474c6c860b9bad02ec81bead4a1f6351413b20c42b6d29675eca",
+    "size": 16202
+   },
+   {
+    "path": "백엔드/server.pyc",
+    "sha256": "3668d8c383c63750262a0c8a74f9f7bcb79488df3f41833245f70c196fe56cf7",
+    "size": 234939
+   }
+  ]
+ }
+}
