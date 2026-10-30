@@ -1,6 +1,6 @@
 {
- "latest": "v230",
- "backend": "b171",
+ "latest": "v231",
+ "backend": "b172",
  "note": "글자 읽기를 내 컴퓨터로 (AI 비용 절감) · 재설치 없는 업데이트",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
@@ -13,8 +13,8 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "1d7af8d50a887124e269b9afdff75d601277bf9e03497742d20dbf7af2db068d",
-    "size": 192007
+    "sha256": "c7677e7447a6e569f3e155541e2dc82b3e29d8b3a157660b9f42f8d53c1d108b",
+    "size": 192068
    },
    {
     "path": "확장프로그램/background.js",
@@ -23,7 +23,7 @@
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "e62586c76ea8729710259bc0ace8e135c112f3ab4141ff12ba0ab19a435ddb5a",
+    "sha256": "4630d2bc9457ffde111f6024e345fb360b7c67071bd20cf2c5f1065c4e3434d3",
     "size": 1003
    },
    {
@@ -40,6 +40,11 @@
     "path": "확장프로그램/port-resolver.js",
     "sha256": "f4fc0f6bff191583a32dc7102194a0bba44b1cb49d0fb83620d28ab3bf2aba69",
     "size": 1318
+   },
+   {
+    "path": "확장프로그램/설명서.html",
+    "sha256": "62359736ceeb2639b561527daa7bdb78435c95eca81aa37e2c8b087d959b1d43",
+    "size": 448837
    },
    {
     "path": "백엔드/categories.pyc",
@@ -63,8 +68,8 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "183a6fdfd78d72951853d9db41a1a1ea0cbd92c16f564f48c57f54dd29388bec",
-    "size": 236483
+    "sha256": "2a06375aaea8750c7a9792d0324ba975bfea17b2fa139241eab33045288826c5",
+    "size": 236955
    }
   ]
  }
