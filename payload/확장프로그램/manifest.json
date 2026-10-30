@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "자동상품등록 프로그램 (자동후불사입 용) by 셀수다",
   "short_name": "자동상품등록",
-  "version": "18.5.1",
+  "version": "18.5.2",
   "description": "네이버 카탈로그 → 자동 상품등록 (AI 이미지·상세, 고시정보, 카탈로그 매칭)",
   "permissions": [
     "activeTab",

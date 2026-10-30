@@ -13,8 +13,8 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "98ca3f8ab4478b5e6f1fd9312c40851dd848ba55837ee9e2cac49fdc85041b4d",
-    "size": 192395
+    "sha256": "1ff02324a2f549a4fd20f933dd07ad03199a8841a3f79dd2526d00ad6abc2d8d",
+    "size": 193093
    },
    {
     "path": "확장프로그램/background.js",
@@ -23,7 +23,7 @@
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "75168999610a162c9ec146502801bbfaac955e74b7eeb3022cc3c711fd0a39b8",
+    "sha256": "c73afd3b95efee2e1b05da0c0e4e5e006970fabb8afe4fb3d1f4ab859d9e3989",
     "size": 1003
    },
    {
@@ -68,8 +68,8 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "fe33b92b46903201f5b4212f87f8117560e63fd9ab958480e1d134ef3a221673",
-    "size": 238332
+    "sha256": "f6f3c8906aaaa4ad3561e2c69ae137f6c9a54595beb28ee44407bfd5073cd4ff",
+    "size": 238871
    }
   ]
  }
