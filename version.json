@@ -1,7 +1,7 @@
 {
- "latest": "v241",
+ "latest": "v242",
  "backend": "b183",
- "note": "리스트업이 엑셀 같은 표로 · 오늘 몇 개 올렸는지 달력으로 · 내 가게 기본정보",
+ "note": "등록할 때 위탁·사입을 묻고 상품코드에 넣습니다",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
   "base": "https://raw.githubusercontent.com/Yoo-Mideum/selsuda-autoreg-releases/main/payload/",
@@ -13,8 +13,8 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "f52283578df2acd6f1908230c115532edb2d073bb65967b05210a4c9a6fba8d9",
-    "size": 232083
+    "sha256": "fd4a177fa0b4e757828298d516345efa746c7e73c3755d28aa6bd8f704b4f1cc",
+    "size": 234620
    },
    {
     "path": "확장프로그램/background.js",
@@ -23,8 +23,8 @@
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "0c31c3d4276fb0dce3367272b3e8df5488430830b725759e59138d070f3b2a54",
-    "size": 1003
+    "sha256": "0ae6ee7298fabe098f6c340b0f575b594880b672872b59fca2e664a7f49154ab",
+    "size": 1001
    },
    {
     "path": "확장프로그램/popup.html",
@@ -43,8 +43,8 @@
    },
    {
     "path": "확장프로그램/설명서.html",
-    "sha256": "c9888bc1d4ae769fe6fc93b8317da56c4826d3435131569ccd73978f8d65a000",
-    "size": 581683
+    "sha256": "b0d07978785eaf43c2469caa97229d1404ffd917979ba5a8466258c41216a200",
+    "size": 618255
    },
    {
     "path": "백엔드/categories.pyc",
