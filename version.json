@@ -1,7 +1,7 @@
 {
- "latest": "v234",
- "backend": "b177",
- "note": "로그인이 컨설팅 회원으로 바뀝니다",
+ "latest": "v241",
+ "backend": "b183",
+ "note": "리스트업이 엑셀 같은 표로 · 오늘 몇 개 올렸는지 달력으로 · 내 가게 기본정보",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
   "base": "https://raw.githubusercontent.com/Yoo-Mideum/selsuda-autoreg-releases/main/payload/",
@@ -13,17 +13,17 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "1ff02324a2f549a4fd20f933dd07ad03199a8841a3f79dd2526d00ad6abc2d8d",
-    "size": 193093
+    "sha256": "f52283578df2acd6f1908230c115532edb2d073bb65967b05210a4c9a6fba8d9",
+    "size": 232083
    },
    {
     "path": "확장프로그램/background.js",
-    "sha256": "9f49a7c8b361bc3f0f4e193e54a96e1ea95dc8a445fdc3ad13f809b8bf2f9062",
-    "size": 67866
+    "sha256": "a9322a5fdf51e79cd9353e3840653eedcab62cd772ca0bbf7f3181c5c1c82455",
+    "size": 69046
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "c73afd3b95efee2e1b05da0c0e4e5e006970fabb8afe4fb3d1f4ab859d9e3989",
+    "sha256": "0c31c3d4276fb0dce3367272b3e8df5488430830b725759e59138d070f3b2a54",
     "size": 1003
    },
    {
@@ -43,8 +43,8 @@
    },
    {
     "path": "확장프로그램/설명서.html",
-    "sha256": "62359736ceeb2639b561527daa7bdb78435c95eca81aa37e2c8b087d959b1d43",
-    "size": 448837
+    "sha256": "c9888bc1d4ae769fe6fc93b8317da56c4826d3435131569ccd73978f8d65a000",
+    "size": 581683
    },
    {
     "path": "백엔드/categories.pyc",
@@ -58,8 +58,8 @@
    },
    {
     "path": "백엔드/mapping.pyc",
-    "sha256": "0c9054ecd0e544a17abd905ff4ff7f57fd1daec1352735e746166ec3b162a2e2",
-    "size": 59274
+    "sha256": "4bcb1f374d6c5d785c3147d1556ff887f66cee97328ed0bb6e75df700ecc607c",
+    "size": 60284
    },
    {
     "path": "백엔드/naver_client.pyc",
@@ -68,8 +68,8 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "f6f3c8906aaaa4ad3561e2c69ae137f6c9a54595beb28ee44407bfd5073cd4ff",
-    "size": 238871
+    "sha256": "32402f5d4c818ca96d089c3721cadf88a495eb2994bdd3ad3742436b99b00747",
+    "size": 258953
    }
   ]
  }
