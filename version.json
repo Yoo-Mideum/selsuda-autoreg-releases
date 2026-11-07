@@ -1,7 +1,7 @@
 {
- "latest": "v242",
- "backend": "b183",
- "note": "등록할 때 위탁·사입을 묻고 상품코드에 넣습니다",
+ "latest": "v243",
+ "backend": "b184",
+ "note": "멈췄을 때 바로 끄는 [⏹ 프로그램 강제 종료] 를 넣었습니다",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
   "base": "https://raw.githubusercontent.com/Yoo-Mideum/selsuda-autoreg-releases/main/payload/",
@@ -13,17 +13,17 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "fd4a177fa0b4e757828298d516345efa746c7e73c3755d28aa6bd8f704b4f1cc",
-    "size": 234620
+    "sha256": "5bb3a45326957170a604b0d67245df0b144570d62428ea7672726cab9f57b785",
+    "size": 237275
    },
    {
     "path": "확장프로그램/background.js",
-    "sha256": "a9322a5fdf51e79cd9353e3840653eedcab62cd772ca0bbf7f3181c5c1c82455",
-    "size": 69046
+    "sha256": "a7086f7f97922b55e3e1be35664fcb342bf6f47f6cfddf93af5fb3edf373e000",
+    "size": 69504
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "0ae6ee7298fabe098f6c340b0f575b594880b672872b59fca2e664a7f49154ab",
+    "sha256": "f010015b3911e8913c018d5242088b0b8d65d38266706eeb06a224d37b908448",
     "size": 1001
    },
    {
@@ -43,8 +43,8 @@
    },
    {
     "path": "확장프로그램/설명서.html",
-    "sha256": "b0d07978785eaf43c2469caa97229d1404ffd917979ba5a8466258c41216a200",
-    "size": 618255
+    "sha256": "f816fa97d476ee9aa38828dc4ef9b1c3efe9567dce4b5842d20d5065601cc861",
+    "size": 633000
    },
    {
     "path": "백엔드/categories.pyc",
@@ -68,8 +68,8 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "32402f5d4c818ca96d089c3721cadf88a495eb2994bdd3ad3742436b99b00747",
-    "size": 258953
+    "sha256": "fac21afc2481aa79255ed45cee4682f4ea6d504690433b16fe078994220289ec",
+    "size": 261161
    }
   ]
  }
