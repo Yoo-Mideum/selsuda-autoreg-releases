@@ -1,7 +1,7 @@
 {
- "latest": "v245",
- "backend": "b185",
- "note": "묶음 사진을 한 번만 만듭니다 (AI 비용 절약)",
+ "latest": "v251",
+ "backend": "b190",
+ "note": "리뷰 사진이 상품과 다르면 빼고 만들기 · 올린 상품 고치기(사진 검토·여러 장·고시 표)",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
   "base": "https://raw.githubusercontent.com/Yoo-Mideum/selsuda-autoreg-releases/main/payload/",
@@ -13,8 +13,8 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "2cf6cdb7efc383cbe5277476cd49fe0af5808095c06baa43fca58ae1ec7d4d5e",
-    "size": 238383
+    "sha256": "ff74dc0d1bc64cfc26fd4397962bd18b03c8031c245a4f40aeb7030a3616cfb6",
+    "size": 269588
    },
    {
     "path": "확장프로그램/background.js",
@@ -23,7 +23,7 @@
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "5ed60e1ea849559143baec4e71a72ff2e07a7e5d221aa87b147497522c2a8510",
+    "sha256": "7228fea5ee3c7362305ba6d6832edbe53ac319d1f1a41057a0af9b3c486c9c9f",
     "size": 1001
    },
    {
@@ -43,8 +43,8 @@
    },
    {
     "path": "확장프로그램/설명서.html",
-    "sha256": "452d2d7f10d0da1e0fb5cc66dda66b8e388e74963d7187db67958032821784f9",
-    "size": 633350
+    "sha256": "515da7418e30256685efd82d4dc2bf9e013fca5f92bd24277ee55fc6d7435351",
+    "size": 719219
    },
    {
     "path": "백엔드/categories.pyc",
@@ -58,8 +58,8 @@
    },
    {
     "path": "백엔드/mapping.pyc",
-    "sha256": "3e2e82565050c210c57f7dc56a159dee0c3fcfcb97697686ec8d9e85dba08663",
-    "size": 63106
+    "sha256": "10a65c65cbcd3619ff0a07d3d7356a384e5a5491cfe5b570473dfdf15c48611b",
+    "size": 75657
    },
    {
     "path": "백엔드/naver_client.pyc",
@@ -68,8 +68,8 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "6a4a2dd7f3db05e2b358702b5b962a3e98a47a437638e092bb0154471d71cdb7",
-    "size": 261161
+    "sha256": "9db6fffa436301f158294e8e1ea4ca5a0dbed67a642903255a20308c3378f7d2",
+    "size": 281705
    }
   ]
  }
