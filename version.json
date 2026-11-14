@@ -1,7 +1,7 @@
 {
- "latest": "v243",
- "backend": "b184",
- "note": "멈췄을 때 바로 끄는 [⏹ 프로그램 강제 종료] 를 넣었습니다",
+ "latest": "v244",
+ "backend": "b185",
+ "note": "묶음으로 올릴 때 고시의 제품명·수량이 제목과 맞습니다",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
   "base": "https://raw.githubusercontent.com/Yoo-Mideum/selsuda-autoreg-releases/main/payload/",
@@ -13,8 +13,8 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "5bb3a45326957170a604b0d67245df0b144570d62428ea7672726cab9f57b785",
-    "size": 237275
+    "sha256": "6b1bf55422694090a3a011d9af5470db27b3a15525d2bd7a8f8c50f3d9ce6ca4",
+    "size": 237643
    },
    {
     "path": "확장프로그램/background.js",
@@ -23,7 +23,7 @@
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "f010015b3911e8913c018d5242088b0b8d65d38266706eeb06a224d37b908448",
+    "sha256": "8dce32aa3f29beda008b5a7575889194bb9e62eaf80c75ce69e866d106fca89c",
     "size": 1001
    },
    {
@@ -43,8 +43,8 @@
    },
    {
     "path": "확장프로그램/설명서.html",
-    "sha256": "f816fa97d476ee9aa38828dc4ef9b1c3efe9567dce4b5842d20d5065601cc861",
-    "size": 633000
+    "sha256": "c133666e5a291930129263a04d2b35d512345e3408e52f5e199714f018b1596e",
+    "size": 633350
    },
    {
     "path": "백엔드/categories.pyc",
@@ -58,8 +58,8 @@
    },
    {
     "path": "백엔드/mapping.pyc",
-    "sha256": "4bcb1f374d6c5d785c3147d1556ff887f66cee97328ed0bb6e75df700ecc607c",
-    "size": 60284
+    "sha256": "3e2e82565050c210c57f7dc56a159dee0c3fcfcb97697686ec8d9e85dba08663",
+    "size": 63106
    },
    {
     "path": "백엔드/naver_client.pyc",
@@ -68,7 +68,7 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "fac21afc2481aa79255ed45cee4682f4ea6d504690433b16fe078994220289ec",
+    "sha256": "6a4a2dd7f3db05e2b358702b5b962a3e98a47a437638e092bb0154471d71cdb7",
     "size": 261161
    }
   ]
