@@ -1,7 +1,7 @@
 {
- "latest": "v251",
- "backend": "b190",
- "note": "리뷰 사진이 상품과 다르면 빼고 만들기 · 올린 상품 고치기(사진 검토·여러 장·고시 표)",
+ "latest": "v252",
+ "backend": "b191",
+ "note": "수량 칸을 그룹상품 하나로 묶어 올리기(시험) · 리뷰 사진이 상품과 다르면 빼고 만들기",
  "url": "https://github.com/Yoo-Mideum/selsuda-autoreg-releases/releases/latest",
  "patch": {
   "base": "https://raw.githubusercontent.com/Yoo-Mideum/selsuda-autoreg-releases/main/payload/",
@@ -13,8 +13,8 @@
    },
    {
     "path": "확장프로그램/autoregister.js",
-    "sha256": "ff74dc0d1bc64cfc26fd4397962bd18b03c8031c245a4f40aeb7030a3616cfb6",
-    "size": 269588
+    "sha256": "6f3b2d4f8c332de0b72df72a1830296e3c4e9d1a45a720facaebcace01c22d63",
+    "size": 271184
    },
    {
     "path": "확장프로그램/background.js",
@@ -23,7 +23,7 @@
    },
    {
     "path": "확장프로그램/manifest.json",
-    "sha256": "7228fea5ee3c7362305ba6d6832edbe53ac319d1f1a41057a0af9b3c486c9c9f",
+    "sha256": "ea9af6e364a3f8a926526501f57303f4c10b24d5d49d9e93d903441d4badc286",
     "size": 1001
    },
    {
@@ -43,7 +43,7 @@
    },
    {
     "path": "확장프로그램/설명서.html",
-    "sha256": "515da7418e30256685efd82d4dc2bf9e013fca5f92bd24277ee55fc6d7435351",
+    "sha256": "b25a7aaddc35dfa1adf78867dfa7112372c13d285d94379fcc37ffe355fa32b4",
     "size": 719219
    },
    {
@@ -68,8 +68,8 @@
    },
    {
     "path": "백엔드/server.pyc",
-    "sha256": "9db6fffa436301f158294e8e1ea4ca5a0dbed67a642903255a20308c3378f7d2",
-    "size": 281705
+    "sha256": "ca940ba0ba7781fa2b87ca59546741b3a366c43f05b3624207d5c9032438ea07",
+    "size": 294804
    }
   ]
  }
